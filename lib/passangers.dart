@@ -7,101 +7,100 @@ class Passangers extends StatefulWidget {
 }
 
 class _PassangersState extends State<Passangers> {
-  var names = [
-    "Aigerim",
-    "Arlan",
-    "ASSEL",
-    "TEMIRLAN",
-    "Свободные места",
-    "Нет имени",
-    "Нет имени",
-    "Нет имени",
-    "Нет имени",
+
+  var passangers = [
+    {
+      'name': 'Aigerim',
+      'place': '0 A',
+      'place2': 'верхний',
+      'type': 'OFFLINE',
+      'telNumber': '77079282498',
+      'pochta': 'Почта',
+      'price': '3000',
+      'colorsType': Colors.grey,
+    },
+    {
+      'name': 'Arlan',
+      'place': '0 B',
+      'place2': 'верхний',
+      'type': 'OFFLINE',
+      'telNumber': '77073452776',
+      'pochta': 'Почта',
+      'price': '3000',
+      'colorsType': Colors.grey,
+    },
+    {
+      'name': 'ASSEL',
+      'place': '1',
+      'type': 'ONLINE',
+      'place2': 'нижний',
+      'telNumber': '77013456644',
+      'pochta': 'Почта',
+      'price': '2700',
+      'colorsType': Colors.green,
+    },
+    {
+      'name': 'TEMIRLAN',
+      'place': '1',
+      'place2': 'нижний',
+      'type': 'ONLINE',
+      'telNumber': '77056874222',
+      'pochta': 'Почта',
+      'price': '2500',
+      'colorsType': Colors.green,
+    },
+    {
+      'name': 'Свободные места',
+      'place': '',
+      'place2': '',
+      'type': '',
+      'telNumber': ' ',
+      'pochta': ' ',
+      'price': ' ',
+      'colorsType': Colors.white10,
+    },
+    {
+      'name': 'Нет имени',
+      'place': '0 A',
+      'place2': 'нижний',
+      'type': 'no type',
+      'telNumber': ' ',
+      'pochta': ' ',
+      'price': ' ',
+      'colorsType': Colors.green,
+    },
+    {
+      'name': 'Нет имени',
+      'place': '0 B',
+      'place2': 'нижний',
+      'type': 'no type',
+      'telNumber': ' ',
+      'pochta': ' ',
+      'price': ' ',
+      'colorsType': Colors.green,
+    },
+    {
+      'name': 'Нет имени',
+      'place': '2',
+      'place2': 'нижний',
+      'type': 'no type',
+      'telNumber': ' ',
+      'pochta': ' ',
+      'price': ' ',
+      'colorsType': Colors.green,
+    },
+    {
+      'name': 'Нет имени',
+      'place': '2',
+      'place2': 'нижний',
+      'type': 'no type',
+      'telNumber': ' ',
+      'pochta': ' ',
+      'price': ' ',
+      'colorsType': Colors.green,
+    },
   ];
 
-  var telNumbers = [
-    "77079282498",
-    "77073452776",
-    "77013456644",
-    "77056874222",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-  ];
-
-  var pochta = [
-    "Почта",
-    "Почта",
-    "Почта",
-    "Почта",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-  ];
-
-  var price = [
-    "3000",
-    "3000",
-    "2700",
-    "2900",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
-  ];
-
-  var places = [
-    "0 A",
-    "0 B",
-    "1",
-    "1",
-    "",
-    "0 A",
-    "0 B",
-    "2",
-    "2",
-  ];
-
-  var places2 = [
-    "верхний",
-    "верхний",
-    "нижний",
-    "нижний",
-    "",
-    "нижний",
-    "нижний",
-    "нижний",
-    "нижний",
-  ];
-
-  var type = [
-    "OFFLINE",
-    "OFFLINE",
-    "ONLINE",
-    "ONLINE",
-    "",
-    "no type",
-    "no type",
-    "no type",
-    "no type",
-  ];
-
-  var colorsType = [
-    Colors.grey,
-    Colors.grey,
-    Colors.green,
-    Colors.green,
-    Colors.white10,
-    Colors.green,
-    Colors.green,
-    Colors.green,
-    Colors.green,
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +126,7 @@ class _PassangersState extends State<Passangers> {
         elevation: 0,
       ),
       body: ListView.builder(
-        itemCount: names.length,
+        itemCount: passangers.length,
         itemBuilder: (context, i) {
           return i == 0 ? _titleText1() : _listPassangers(i - 1);
         },
@@ -183,7 +182,7 @@ class _PassangersState extends State<Passangers> {
   _listPassangers(i) {
     return GestureDetector(
       onTap: () {
-        infoAboutPassanger(context, names[i], telNumbers[i], pochta[i], places[i], places2[i], price[i]);
+        infoAboutPassanger(context, passangers[i]['name'], passangers[i]['telNumber'], passangers[i]['pochta'], passangers[i]['place'], passangers[i]['place2'], passangers[i]['price']);
       },
       child: Column(
         children: <Widget>[
@@ -194,7 +193,7 @@ class _PassangersState extends State<Passangers> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  names[i],
+                  passangers[i]['name'].toString(),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black54,
@@ -207,7 +206,7 @@ class _PassangersState extends State<Passangers> {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          places[i],
+                          passangers[i]['place'].toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black54,
@@ -215,7 +214,7 @@ class _PassangersState extends State<Passangers> {
                           ),
                         ),
                         Text(
-                          places2[i],
+                          passangers[i]['place2'].toString(),
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black54,
@@ -231,7 +230,7 @@ class _PassangersState extends State<Passangers> {
                   height: 35,
                   child: Center(
                     child: Text(
-                      type[i],
+                      passangers[i]['type'].toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -241,7 +240,7 @@ class _PassangersState extends State<Passangers> {
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: colorsType[i],
+                    color: passangers[i]['colorsType'],
                   ),
                 )
               ],
@@ -276,7 +275,7 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
                           fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      name,
+                      name.toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black54,
@@ -284,7 +283,7 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
                       ),
                     ),
                     Text(
-                      telNumber,
+                      telNumber.toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black54,
@@ -292,7 +291,7 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
                       ),
                     ),
                     Text(
-                      pochta,
+                      pochta.toString(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.green,
@@ -319,7 +318,7 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              place + ' ' + place2,
+                              place.toString() + ' ' + place2.toString(),
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black54,
@@ -344,7 +343,7 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              price,
+                              price.toString(),
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.black54,
@@ -397,3 +396,5 @@ infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
     },
   );
 }
+
+
