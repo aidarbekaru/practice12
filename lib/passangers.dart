@@ -250,6 +250,15 @@ class _PassangersState extends State<Passangers> {
       ),
     );
   }
+  
+    void _deletePassanger(int i) {
+    String deleted = passangers.removeAt(i);
+    AnimatedListRemovedItemBuilder builder = (context, animation) {
+      return i == 0 ? _titleText1() : _listPassangers(i - 1);
+    };
+  }
+
+  
 }
 
 infoAboutPassanger(context, name, telNumber, pochta, place, place2, price) {
